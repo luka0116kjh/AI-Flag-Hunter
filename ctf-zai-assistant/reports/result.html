@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CTF Folder Flag Extractor Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #101114; color: #f1f3f5; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    th, td { border: 1px solid #394150; padding: 8px; vertical-align: top; }
+    th { background: #1d2430; }
+    section { border: 1px solid #394150; padding: 12px; margin: 14px 0; border-radius: 6px; }
+    pre { white-space: pre-wrap; word-break: break-word; background: #0b0d10; padding: 10px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>CTF Folder Flag Extractor Report</h1>
+  <p><strong>Folder:</strong> samples</p>
+  <p><strong>Files scanned:</strong> 1</p>
+  <p><strong>Candidates found:</strong> 5</p>
+  
+<h2>High Confidence</h2>
+<table>
+  <tr><th>Value</th><th>Source</th><th>Transform</th><th>Reason</th></tr>
+  <tr><td colspan="4">none</td></tr>
+</table>
+
+  
+<h2>Medium Confidence</h2>
+<table>
+  <tr><th>Value</th><th>Source</th><th>Transform</th><th>Reason</th></tr>
+  <tr><td colspan="4">none</td></tr>
+</table>
+
+  
+<h2>Low / Suspicious</h2>
+<table>
+  <tr><th>Value</th><th>Source</th><th>Transform</th><th>Reason</th></tr>
+  <tr><td>- output file: output.txt, encrypted.dat</td><td>samples\README.txt / ASCII strings, decoded text preview</td><td>ASCII strings, decoded text preview</td><td>Contains suspicious keyword &#x27;encrypt&#x27;.</td></tr>
+<tr><td>Put your CTF challenge files here.</td><td>samples\README.txt / ASCII strings, decoded text preview</td><td>ASCII strings, decoded text preview</td><td>Contains suspicious keyword &#x27;CTF&#x27;.</td></tr>
+<tr><td>python scan_folder.py .\samples --only-flag</td><td>samples\README.txt / ASCII strings, decoded text preview</td><td>ASCII strings, decoded text preview</td><td>Contains suspicious keyword &#x27;flag&#x27;.</td></tr>
+<tr><td>python scan_folder.py .\samples --only-flag --all-advanced</td><td>samples\README.txt / ASCII strings, decoded text preview</td><td>ASCII strings, decoded text preview</td><td>Contains suspicious keyword &#x27;flag&#x27;.</td></tr>
+<tr><td>python scan_folder.py .\samples --only-flag --xor</td><td>samples\README.txt / ASCII strings, decoded text preview</td><td>ASCII strings, decoded text preview</td><td>Contains suspicious keyword &#x27;flag&#x27;.</td></tr>
+</table>
+
+  <h2>Advanced Results</h2>
+  <pre>{}</pre>
+  <h2>AI Analysis</h2>
+  <pre>## 분석 결과 요약
+
+가장 유력한 플래그 후보: **없음**
+
+현재 업로드된 파일(`samples\README.txt`)은 단순한 텍스트 안내 파일이며, 실제 CTF 챌린지 바이너리나 데이터 파일은 포함되어 있지 않습니다.
+
+---
+
+## [1] 챌린지 유형 및 핵심 개념 분석
+- **예상 카테고리**: 없음 (현재 리버싱 대상 파일 부재)
+- **상황**: 업로드된 폴더에는 `README.txt` 1개(362바이트)만 존재하며, 이 파일은 플래그를 포함하지 않는 순수 안내문입니다.
+- **증거**: 파일 전체 내용이 362바이트이고, 모두 printable ASCII이며, 어떤 인코딩·난독화·암호화 흔적도 없음.
+
+---
+
+## [2] 공격 지점 식별
+- 의심 항목: 없음
+- 이유:
+  - 파일 내용은 단순한 사용법 안내: &quot;Put your CTF challenge files here.&quot; + `scan_folder.py` 실행 예시
+  - 발견된 &quot;suspicious keyword&quot; 매칭은 `CTF`, `flag`, `encrypt`라는 단어가 안내문에 등장한 것이며, 실제 플래그나 암호화 페이로드가 아님
+  - 예: `output file: output.txt, encrypted.dat` → 단순 예시 텍스트
+  - 예: `python scan_folder.py .\samples --only-flag` → 도구 사용법 안내
+
+---
+
+## [3] 다음 단계 권장 (증거 기반)
+다른 파일이 제공되지 않았으므로, 현재 상태에서는 솔루션을 진행할 수 없습니다.
+
+1. **원본 리버싱/포렌직 대상 파일을 업로드하세요**
+   - README.txt 예시를 기준으로 예상 파일명: `chall`, `legacyopt`, `main.exe`, `output.txt`, `encrypted.dat`, `image.png`, `dump.bin`, `capture.pcap` 등
+2. **기존 `scan_folder.py` 도구를 먼저 실행해 보세요**
+   - `python scan_folder.py .\samples --only-flag`
+   - 필요시 `--xor`, `--all-advanced` 옵션 추가 실행
+3. **폴더 내에 바이너리/데이터 파일이 실제로 존재하는지 확인**
+   - 현재 업로드에는 README.txt만 포함되어 있음
+   - 실제 챌린지 파일이 누락되었을 가능성이 높음
+
+---
+
+## [4] 결론
+현재 제공된 증거에서는 **신뢰할 수 있는 플래그 후보가 없습니다.** README.txt 파일 자체는 단순 안내문이며, 매칭된 &quot;suspicious&quot; 문자열들은 모두 예시 텍스트 또는 도구 사용법입니다.
+
+실제 챌린지 바이너리(`chall`, `main.exe` 등)나 출력 파일(`encrypted.dat`, `output.txt` 등)을 업로드해 주시면, 리버싱/복호화/플래그 추출 작업을 즉시 진행하겠습니다.</pre>
+  <h2>Per-file Evidence</h2>
+  
+<section>
+  <h3>samples\README.txt</h3>
+  <p><strong>Size:</strong> 362 bytes</p>
+  <p><strong>SHA-256:</strong> 57c00961a67c7afee9efe8b657707819c6a389d2bb035eb4a6c631709e4fb98c</p>
+  <p><strong>Type:</strong> Unknown or raw data</p>
+  <h4>Text Preview</h4>
+  <pre>Put your CTF challenge files here.
+
+Examples:
+- reversing binary: chall, legacyopt, main.exe
+- output file: output.txt, encrypted.dat
+- forensic file: image.png, dump.bin, capture.pcap
+
+Then run:
+
+python scan_folder.py .\samples --only-flag
+python scan_folder.py .\samples --only-flag --xor
+python scan_folder.py .\samples --only-flag --all-advanced
+</pre>
+  <h4>Hex Preview</h4>
+  <pre>00000000: 50 75 74 20 79 6f 75 72 20 43 54 46 20 63 68 61  Put your CTF cha
+00000010: 6c 6c 65 6e 67 65 20 66 69 6c 65 73 20 68 65 72  llenge files her
+00000020: 65 2e 0d 0a 0d 0a 45 78 61 6d 70 6c 65 73 3a 0d  e.....Examples:.
+00000030: 0a 2d 20 72 65 76 65 72 73 69 6e 67 20 62 69 6e  .- reversing bin
+00000040: 61 72 79 3a 20 63 68 61 6c 6c 2c 20 6c 65 67 61  ary: chall, lega
+00000050: 63 79 6f 70 74 2c 20 6d 61 69 6e 2e 65 78 65 0d  cyopt, main.exe.
+00000060: 0a 2d 20 6f 75 74 70 75 74 20 66 69 6c 65 3a 20  .- output file: 
+00000070: 6f 75 74 70 75 74 2e 74 78 74 2c 20 65 6e 63 72  output.txt, encr
+00000080: 79 70 74 65 64 2e 64 61 74 0d 0a 2d 20 66 6f 72  ypted.dat..- for
+00000090: 65 6e 73 69 63 20 66 69 6c 65 3a 20 69 6d 61 67  ensic file: imag
+000000a0: 65 2e 70 6e 67 2c 20 64 75 6d 70 2e 62 69 6e 2c  e.png, dump.bin,
+000000b0: 20 63 61 70 74 75 72 65 2e 70 63 61 70 0d 0a 0d   capture.pcap...
+000000c0: 0a 54 68 65 6e 20 72 75 6e 3a 0d 0a 0d 0a 70 79  .Then run:....py
+000000d0: 74 68 6f 6e 20 73 63 61 6e 5f 66 6f 6c 64 65 72  thon scan_folder
+000000e0: 2e 70 79 20 2e 5c 73 61 6d 70 6c 65 73 20 2d 2d  .py .\samples --
+000000f0: 6f 6e 6c 79 2d 66 6c 61 67 0d 0a 70 79 74 68 6f  only-flag..pytho
+00000100: 6e 20 73 63 61 6e 5f 66 6f 6c 64 65 72 2e 70 79  n scan_folder.py
+00000110: 20 2e 5c 73 61 6d 70 6c 65 73 20 2d 2d 6f 6e 6c   .\samples --onl
+00000120: 79 2d 66 6c 61 67 20 2d 2d 78 6f 72 0d 0a 70 79  y-flag --xor..py
+00000130: 74 68 6f 6e 20 73 63 61 6e 5f 66 6f 6c 64 65 72  thon scan_folder
+00000140: 2e 70 79 20 2e 5c 73 61 6d 70 6c 65 73 20 2d 2d  .py .\samples --
+00000150: 6f 6e 6c 79 2d 66 6c 61 67 20 2d 2d 61 6c 6c 2d  only-flag --all-
+00000160: 61 64 76 61 6e 63 65 64 0d 0a                    advanced..</pre>
+  <h4>Suspicious Strings</h4>
+  <pre>Put your CTF challenge files here.
+- output file: output.txt, encrypted.dat
+python scan_folder.py .\samples --only-flag
+python scan_folder.py .\samples --only-flag --xor
+python scan_folder.py .\samples --only-flag --all-advanced</pre>
+  <h4>Extracted Strings</h4>
+  <pre>Put your CTF challenge files here.
+- output file: output.txt, encrypted.dat
+python scan_folder.py .\samples --only-flag
+python scan_folder.py .\samples --only-flag --xor
+python scan_folder.py .\samples --only-flag --all-advanced
+Examples:
+- reversing binary: chall, legacyopt, main.exe
+- forensic file: image.png, dump.bin, capture.pcap
+Then run:</pre>
+</section>
+
+</body>
+</html>
