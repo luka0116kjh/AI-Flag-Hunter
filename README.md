@@ -1,5 +1,9 @@
 # CTF Z.AI Assistant
 
+[English](README.md) | [한국어](README_KO.md)
+
+---
+
 A Python assistant for CTF challenge solving. It includes a terminal CLI and a small web UI. It uses the Z.AI API through the OpenAI SDK-compatible interface and helps with vulnerability analysis, attack points, solving strategy, payload ideas, script drafts, and reversing-focused file analysis.
 
 The assistant is designed for progressive disclosure, so you can ask for:
